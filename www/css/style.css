@@ -2,7 +2,6 @@ body {
   --text-color: #222;
   --bkg-color: #fff;
   background: var(--bkg-color);
-  position: relative;
   
 }
 body.dark-theme {
@@ -31,13 +30,27 @@ p {
   color: var(--text-color);
 }
 
-* {
-  margin: 0;
-}
-html, body {
-  height: 100%;
-}
+.clear { clear: both; height: 15%; }
 
-footer{
-	margin-top:6em;
+.footer {
+
+    height:100px; // Replace with the height your footer should be
+    width: 100%; // Don't change
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+	right:0pt;
+
+}   
+
+.footer_contents {
+
+    height:100px; // Replace with the height your footer should be
+    width: 1000px; // Visible width of footer
+    margin:auto;
+
 }
