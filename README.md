@@ -20,6 +20,8 @@ This project is mainly coded with :
 
 • CSS
 
-Leaving a star on this project will encourage me a lot. For any problem do not hesitate to open an issue. 
+ ⭐ **Leaving a star on this project will encourage me a lot** ⭐
+
+For any problem do not hesitate to open an issue. 
 
 **Pull requests are welcome**
