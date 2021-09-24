@@ -145,6 +145,7 @@ btn.addEventListener("click", function () {
 
 
 if (localStorage.getItem("cookieAccepted") == null){
+	initialise();
 	$('#cookie')
 	  .modal('show')
 	  .modal('setting', 'closable', false)
