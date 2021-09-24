@@ -6,6 +6,10 @@ This project consists in the creation of a website simplifying the use of all th
 
 **To make it simple MasterInfoDashBoard gathers all the most useful links for your year of master 1 computer science**
 
+## Project link
+
+You can find the project at the following address : [MasterInfoDashboard](https://master-info.ew.r.appspot.com/)
+
 ## Code
 
 This project is mainly coded with : 
