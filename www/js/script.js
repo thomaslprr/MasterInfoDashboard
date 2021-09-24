@@ -204,5 +204,5 @@ function redirecte(num){
 
 function accepteCookie(){
 	localStorage.setItem("cookieAccepted",true);
-	onParameterAction();
+	location.reload();
 }
