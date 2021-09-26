@@ -192,6 +192,10 @@ function redirecEDTV1Alma(){
 	
 }
 
+function redirectGithubLink(){
+    window.open("https://github.com/thomaslprr/MasterInfoDashboard", '_blank');
+}
+
 function redirecte(num){
 	if(num==1){
 		window.open("https://edt.univ-nantes.fr/sciences/g351177.xml", '_blank');
