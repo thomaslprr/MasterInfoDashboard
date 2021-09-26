@@ -171,16 +171,16 @@ function redirecEDTV1(){
 	var URL = "";
 	switch(currentFormation){
 	case "vico":
-		URL = "https://edt.univ-nantes.fr/sciences/g975679.html";
+		URL = "https://edt.univ-nantes.fr/sciences/g975679.xml";
 		break;
 	case "atal" :
-		URL = "https://edt.univ-nantes.fr/sciences/g351179.html" ;
+		URL = "https://edt.univ-nantes.fr/sciences/g351179.xml" ;
 		break;
 	case "ds" :
-		URL = "https://edt.univ-nantes.fr/sciences/g975683.html";
+		URL = "https://edt.univ-nantes.fr/sciences/g975683.xml";
 		break;
 	case "oro" :
-		URL = "https://edt.univ-nantes.fr/sciences/g351226.html";
+		URL = "https://edt.univ-nantes.fr/sciences/g351226.xml";
 		break;
 	}
 	window.open(URL, '_blank');
@@ -194,10 +194,10 @@ function redirecEDTV1Alma(){
 
 function redirecte(num){
 	if(num==1){
-		window.open("https://edt.univ-nantes.fr/sciences/g351177.html", '_blank');
+		window.open("https://edt.univ-nantes.fr/sciences/g351177.xml", '_blank');
 		
 	}else{
-		window.open("https://edt.univ-nantes.fr/sciences/g351178.html", '_blank');
+		window.open("https://edt.univ-nantes.fr/sciences/g351178.xml", '_blank');
 	}
 	updateEdtBtn();
 }
