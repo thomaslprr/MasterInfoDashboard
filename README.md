@@ -10,7 +10,7 @@ This project was completed in one day and focuses on usefulness rather than beau
 
 ## Project link
 
-You can find the project at the following address : [MasterInfoDashboard](https://master-info.ew.r.appspot.com/)
+You can find the project at the following address : [MasterInfoDashboard](https://master-info.univ-nantes.io/)
 
 ## Code
 
