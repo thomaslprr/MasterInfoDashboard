@@ -10,6 +10,13 @@ $('.message .close')
 
 var  content = document.getElementsByClassName("formation");
 var options = document.getElementsByClassName("option");
+var semestres = document.getElementsByClassName("semestre");
+var bouquets = document.getElementsByClassName("bouquet");
+
+var optionPreference = document.getElementById("optionPreference");
+var bouquetPreference = document.getElementById("bouquetPreference");
+
+
 var texte = document.getElementById("texte_info");
 var titre = document.getElementById("title_master");
 var cours = document.getElementsByClassName("cours");
@@ -20,6 +27,8 @@ var color = ["red","orange","yellow","olive","green","teal","blue","violet","pur
 
 var currentFormation = "alma";
 var currentOption = "recherche";
+var currentSemestre = "sem1";
+var currentBouquet = "bou3"
 
 function reactualiserBouton(name) {
 	for(var i = 0; i < content.length; i++) {
@@ -45,6 +54,39 @@ function reactualiserOptions(name){
 	updateTexte();
 }
 
+function reactualiserSemestre(name){
+	for(var i = 0; i < semestres.length; i++) {
+	    if(semestres[i].id != name){
+			semestres[i].className = "ui inverted red button semestre";
+	    }else{
+			currentSemestre = semestres[i].id;
+	    	semestres[i].className = "ui inverted button green semestre";
+	    }
+	}
+	updateTexte();
+	updatePreference();
+}
+
+function reactualiserBouquets(name){
+	for(var i = 0; i < bouquets.length; i++) {
+	    if(bouquets[i].id != name){
+			bouquets[i].className = "ui inverted red button bouquet";
+	    }else{
+			currentBouquet = bouquets[i].id;
+	    	bouquets[i].className = "ui inverted button green bouquet";
+	    }
+	}
+	updateTexte();
+}
+
+
+function semToSemestre(){
+	if(currentSemestre=="sem1"){
+		return "Semestre 1"
+	}
+	return "Semestre 2"
+}
+
 function updateTexte(){
 	let option = "";
 	if(currentOption=="recherche"){
@@ -53,8 +95,21 @@ function updateTexte(){
 		option = "Management à visée innovante et entrepreneuriale";
 	}
 	
-	texte.innerHTML = "<p style=\"color:#FCFCFC\">Vous êtes étudiant de "+currentFormation.toUpperCase() +" et votre option est "+option+".</p>";
-	titre.innerHTML= "Master Informatique "+currentFormation.toUpperCase()+" - Semestre 1"
+	let bouquet = "";
+	if(currentBouquet=="bou3"){
+		bouquet = "bouquet 3";
+	}else if(currentBouquet=="bou4"){
+		bouquet = "bouquet 4";
+	}else if(currentBouquet=="bou5"){
+		bouquet = "bouquet 5";
+	}
+	
+	if(currentSemestre=="sem1"){
+		texte.innerHTML = "<p style=\"color:#FCFCFC\">Vous êtes étudiant de "+currentFormation.toUpperCase() +" et votre option est "+option+".</p>";
+	}else{
+		texte.innerHTML = "<p style=\"color:#FCFCFC\">Vous êtes étudiant de "+currentFormation.toUpperCase() +" et votre bouquet est le "+bouquet+".</p>";
+	}
+	titre.innerHTML= "Master Informatique "+currentFormation.toUpperCase()+" - "+semToSemestre();
 }
 
 function onValideAction(){
@@ -63,6 +118,8 @@ function onValideAction(){
 	updateEdtBtn();
 	localStorage.setItem("option", currentOption);
 	localStorage.setItem("formation", currentFormation);
+	localStorage.setItem("semestre", currentSemestre);
+	localStorage.setItem("bouquet", currentBouquet);
 	
 }
 
@@ -72,6 +129,16 @@ function updateEdtBtn(){
 	}else{
 		edtBtn.innerHTML = "<button class=\"ui button twitter huge\" onclick=\"redirecEDTV1Alma()\"><i class=\"calendar icon\"></i>EDT V1</button>" ;
 		
+	}
+}
+
+function updatePreference(){
+	if(currentSemestre=="sem1"){
+		bouquetPreference.style.display = 'none';
+		optionPreference.style.display = 'block';
+	}else{
+		bouquetPreference.style.display = 'block';
+		optionPreference.style.display = 'none';
 	}
 }
 
@@ -87,12 +154,17 @@ function initialise(){
 function updateCours(){
 	let cpt=0;
 	for(var i=0;i<cours.length;i++){
-		if(cours[i].className.includes(currentFormation)){
+		if(cours[i].className.includes(currentFormation) && cours[i].className.includes(currentSemestre)){
 			cours[i].style.display = 'block'; 
 			cours[i].className = cours[i].className+" "+color[cpt%12];
 			cpt++;          
 		}
-		if(cours[i].className.includes(currentOption)){
+		if(cours[i].className.includes(currentOption) && cours[i].className.includes(currentSemestre)){
+			cours[i].style.display = 'block';
+			cours[i].className = cours[i].className+" "+color[cpt%12]; 
+			cpt++;          
+		}
+		if(cours[i].className.includes(currentBouquet) && cours[i].className.includes(currentSemestre)){
 			cours[i].style.display = 'block';
 			cours[i].className = cours[i].className+" "+color[cpt%12]; 
 			cpt++;          
@@ -150,22 +222,32 @@ if (localStorage.getItem("cookieAccepted") == null){
 	  .modal('show')
 	  .modal('setting', 'closable', false)
 	;
-}else if (localStorage.getItem("formation") != null) {
-	if (localStorage.getItem("option") !=null){
-		currentFormation=localStorage.getItem("formation");
-		currentOption = localStorage.getItem("option");
-		initialise();
-		updateCours();
-		updateTexte();
-		reactualiserBouton(currentFormation);
-		reactualiserOptions(currentOption);
-		updateEdtBtn();
-	}else{
-		onParameterAction();
-	}
 }else{
-	onParameterAction();
-}
+	
+	if(localStorage.getItem("formation") == null || localStorage.getItem("option") ==null || localStorage.getItem("semestre") ==null){
+		onParameterAction();
+	}else{
+		if(localStorage.getItem("semestre")==sem2 && localStorage.getItem("bouquet")==null){
+			onParameterAction();
+		}else{
+			currentFormation=localStorage.getItem("formation");
+			currentOption = localStorage.getItem("option");
+			currentSemestre = localStorage.getItem("semestre");
+			currentBouquet = localStorage.getItem("bouquet");
+			initialise();
+			updateCours();
+			updateTexte();
+			updatePreference();
+			reactualiserBouton(currentFormation);
+			reactualiserOptions(currentOption);
+			reactualiserSemestre(currentSemestre);
+			reactualiserBouquets(currentBouquet);
+			updateEdtBtn();
+			
+		}
+	}
+	
+} 
 
 function redirecEDTV1(){
 	var URL = "";
