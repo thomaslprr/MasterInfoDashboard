@@ -217,6 +217,7 @@ btn.addEventListener("click", function () {
 
 
 if (localStorage.getItem("cookieAccepted") == null){
+	updatePreference();
 	initialise();
 	$('#cookie')
 	  .modal('show')
