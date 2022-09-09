@@ -8,7 +8,7 @@ $('.message .close')
 ;
 
 
-var  content = document.getElementsByClassName("formation");
+var content = document.getElementsByClassName("formation");
 var options = document.getElementsByClassName("option");
 var semestres = document.getElementsByClassName("semestre");
 var bouquets = document.getElementsByClassName("bouquet");
@@ -81,10 +81,9 @@ function reactualiserBouquets(name){
 
 
 function semToSemestre(){
-	if(currentSemestre=="sem1"){
-		return "Semestre 1"
-	}
-	return "Semestre 2"
+	if(currentSemestre=="m1sem1") return "1 - Semester 1";
+	if(currentSemestre=="m1sem1") return "1 - Semester 2";
+	return "2 - Semester 1";
 }
 
 function updateTexte(){
@@ -104,18 +103,21 @@ function updateTexte(){
 		bouquet = "bouquet 5";
 	}
 	
-	if(currentSemestre=="sem1"){
+	if(currentSemestre=="m1sem1"){
 		texte.innerHTML = "<p style=\"color:#FCFCFC\">Vous êtes étudiant de "+currentFormation.toUpperCase() +" et votre option est "+option+".</p>";
-	}else{
+	}else if (currentSemestre=="m1sem2") {
 		texte.innerHTML = "<p style=\"color:#FCFCFC\">Vous êtes étudiant de "+currentFormation.toUpperCase() +" et votre bouquet est le "+bouquet+".</p>";
+	} else if (currentSemestre=="m2sem1") {
+		texte.innerHTML = "<p style=\"color:#FCFCFC\">You are a student in " + currentFormation.toUpperCase() + ".</p>";
 	}
-	titre.innerHTML= "Master Informatique "+currentFormation.toUpperCase()+" - "+semToSemestre();
+	titre.innerHTML= "Master "+currentFormation.toUpperCase()+" "+semToSemestre();
 }
 
 function onValideAction(){
 	initialise();
 	updateCours();
 	updateEdtBtn();
+	updateSocial();
 	localStorage.setItem("option", currentOption);
 	localStorage.setItem("formation", currentFormation);
 	localStorage.setItem("semestre", currentSemestre);
@@ -123,9 +125,23 @@ function onValideAction(){
 	
 }
 
+function updateSocial() {
+	if (currentFormation == "vico" && currentSemestre == "m2sem1") {
+		document.querySelector("#a_social").href = "https://mattermost.univ-nantes.fr/vico-master";
+		document.querySelector("#span_social").innerHTML = "Mattermost";
+		document.querySelector("#i_social").style.display = "none";
+		document.querySelector("#logo_mattermost").style.display = "inline-block";
+	} else {
+		document.querySelector("#a_social").href = "https://discord.gg/AX2An8c";
+		document.querySelector("#span_social").innerHTML = "Discord";
+		document.querySelector("#i_social").style.display = "inline-block";
+		document.querySelector("#logo_mattermost").style.display = "none";
+	}
+}
+
 function updateEdtBtn(){
 	if(currentFormation != "alma"){
-		edtBtn.innerHTML = "<button class=\"ui button twitter huge\" onclick=\"redirecEDTV1()\"><i class=\"calendar icon\"></i>EDT V1</button>";
+		edtBtn.innerHTML = "<button class=\"ui button twitter huge\" onclick=\"redirecEDTV1()\"><i class=\"calendar icon\"></i>Timetable</button>";
 	}else{
 		edtBtn.innerHTML = "<button class=\"ui button twitter huge\" onclick=\"redirecEDTV1Alma()\"><i class=\"calendar icon\"></i>EDT V1</button>" ;
 		
@@ -133,11 +149,14 @@ function updateEdtBtn(){
 }
 
 function updatePreference(){
-	if(currentSemestre=="sem1"){
+	if(currentSemestre=="m1sem1"){
 		bouquetPreference.style.display = 'none';
 		optionPreference.style.display = 'block';
-	}else{
+	}else if (currentSemestre=="m1sem2") {
 		bouquetPreference.style.display = 'block';
+		optionPreference.style.display = 'none';
+	} else {
+		bouquetPreference.style.display = 'none';
 		optionPreference.style.display = 'none';
 	}
 }
@@ -228,7 +247,7 @@ if (localStorage.getItem("cookieAccepted") == null){
 	if(localStorage.getItem("formation") == null || localStorage.getItem("option") ==null || localStorage.getItem("semestre") ==null){
 		onParameterAction();
 	}else{
-		if(localStorage.getItem("semestre")==sem2 && localStorage.getItem("bouquet")==null){
+		if(localStorage.getItem("semestre")=="m1sem2" && localStorage.getItem("bouquet")==null){
 			onParameterAction();
 		}else{
 			currentFormation=localStorage.getItem("formation");
@@ -239,6 +258,7 @@ if (localStorage.getItem("cookieAccepted") == null){
 			updateCours();
 			updateTexte();
 			updatePreference();
+			updateSocial();
 			reactualiserBouton(currentFormation);
 			reactualiserOptions(currentOption);
 			reactualiserSemestre(currentSemestre);
@@ -255,6 +275,7 @@ function redirecEDTV1(){
 	switch(currentFormation){
 	case "vico":
 		URL = "https://edt.univ-nantes.fr/sciences/g975679.xml";
+		if (currentSemestre=="m2sem1") URL = "https://edt.univ-nantes.fr/chantrerie-gavy/g928787.html";
 		break;
 	case "atal" :
 		URL = "https://edt.univ-nantes.fr/sciences/g351179.xml" ;
