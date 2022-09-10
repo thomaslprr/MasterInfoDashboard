@@ -25,9 +25,9 @@ var edtBtn = document.getElementById("edt_button");
 
 var color = ["red","orange","yellow","olive","green","teal","blue","violet","purple","pink","brown","grey","black"];
 
-var currentFormation = "alma";
+var currentFormation = "atal";
 var currentOption = "recherche";
-var currentSemestre = "sem1";
+var currentSemestre = "m2sem1";
 var currentBouquet = "bou3"
 
 function reactualiserBouton(name) {
@@ -82,7 +82,7 @@ function reactualiserBouquets(name){
 
 function semToSemestre(){
 	if(currentSemestre=="m1sem1") return "1 - Semester 1";
-	if(currentSemestre=="m1sem1") return "1 - Semester 2";
+	if(currentSemestre=="m1sem2") return "1 - Semester 2";
 	return "2 - Semester 1";
 }
 
@@ -131,7 +131,13 @@ function updateSocial() {
 		document.querySelector("#span_social").innerHTML = "Mattermost";
 		document.querySelector("#i_social").style.display = "none";
 		document.querySelector("#logo_mattermost").style.display = "inline-block";
-	} else {
+	}else if(currentFormation == "atal" && currentSemestre == "m2sem1"){
+		document.querySelector("#a_social").href = "https://mattermost.univ-nantes.fr/m2-atal-21-22";
+		document.querySelector("#span_social").innerHTML = "Mattermost";
+		document.querySelector("#i_social").style.display = "none";
+		document.querySelector("#logo_mattermost").style.display = "inline-block";
+	} 
+	else {
 		document.querySelector("#a_social").href = "https://discord.gg/AX2An8c";
 		document.querySelector("#span_social").innerHTML = "Discord";
 		document.querySelector("#i_social").style.display = "inline-block";
@@ -279,6 +285,7 @@ function redirecEDTV1(){
 		break;
 	case "atal" :
 		URL = "https://edt.univ-nantes.fr/sciences/g351179.xml" ;
+		if(currentSemestre=="m2sem1") URL = "https://edt.univ-nantes.fr/sciences/g351246.html";
 		break;
 	case "ds" :
 		URL = "https://edt.univ-nantes.fr/sciences/g975683.xml";
