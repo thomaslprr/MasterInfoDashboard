@@ -1,13 +1,13 @@
 <html>
 <head id="header">
-	<title>Master Informatique - Semestre 1</title>
+	<title>Master Informatique Dashboard</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="shortcut icon" href="images/logo.ico" />
+	<link rel="shortcut icon" href="images/favicon.png" />
 	<!-- Global site tag (gtag.js) - Google Analytics -->
     	<script async src="https://www.googletagmanager.com/gtag/js?id=G-297V14MTLE"></script>
    	<script>
@@ -21,596 +21,687 @@
 
 <body id="body">
 	<div class="ui basic modal" id="setting">
-	  <div class="ui icon header">
-	    <i class="cog icon"></i>
-	    Paramètres
-	  </div>
+		<div class="ui icon header">
+			<i class="cog icon"></i>
+			Settings
+		</div>
 	  
-	  <div class="ui grid">
+		<div class="ui grid">
 		  
-  	    <div class="sixteen wide column">
-  		    <button id="sem1" class="ui inverted button green semestre" onclick="reactualiserSemestre('sem1')">Semestre 1</button>
-  		    <button id="sem2" class="ui inverted red button semestre" onclick="reactualiserSemestre('sem2')">Semestre 2</button>
-  	    </div>
-		
-		  <p style="color:#FCFCFC">Formation :</p>
-	    <div class="sixteen wide column">
-		    <button id="alma" class="ui inverted button green formation" onclick="reactualiserBouton('alma')">ALMA</button>
-		    <button id="atal" class="ui inverted red button formation" onclick="reactualiserBouton('atal')">ATAL</button>
-		    <button id="vico" class="ui inverted red button formation" onclick="reactualiserBouton('vico')">VICO</button>
-			<button id="oro" class="ui inverted red button formation" onclick="reactualiserBouton('oro')">ORO</button>
-		    <button id="ds" class="ui inverted red button formation" onclick="reactualiserBouton('ds')">DS</button>
-	    </div>
-		
-	 <div class="sixteen wide column" id="optionPreference">
-		
-		<div class="sixteen wide column">
-		<p style="color:#FCFCFC">Option :</p><br/>
-	</div>
-		<div class="ui stackable equal width grid">
-	    <div class="column">
-	    	<button id="recherche" class="ui inverted green button option" onclick="reactualiserOptions('recherche')">Introduction à la recherche <br/><br/> Communication connaissance de l'entreprise</button>
-	    </div>
-	    <div class="column">
-	    	<button id="management" class="ui inverted red button option" onclick="reactualiserOptions('management')">Management à visée innovante et entrepreneuriale</button>
-	    </div>
-	</div>
-	</div>
-		
-		
-		 <div class="sixteen wide column" id="bouquetPreference">
 			<div class="sixteen wide column">
-			<p style="color:#FCFCFC">Bouquet :</p><br/>
+				<button id="m1sem1" class="ui inverted green button semestre" onclick="reactualiserSemestre('m1sem1')">M1 Semester 1</button>
+				<button id="m1sem2" class="ui inverted red button semestre" onclick="reactualiserSemestre('m1sem2')">M1 Semester 2</button>
+				<button id="m2sem1" class="ui inverted red button semestre" onclick="reactualiserSemestre('m2sem1')">M2 Semester 1</button>
 			</div>
-			<div class="ui stackable equal width grid">
-		    <div class="column">
-		    	<button id="bou3" class="ui inverted green button bouquet" onclick="reactualiserBouquets('bou3')">
-					Bouquet 3 :<br/><br/>
+			
+			<p style="color:#FCFCFC">Major :</p>
+			<div class="sixteen wide column">
+				<button id="alma" class="ui inverted green button formation" onclick="reactualiserBouton('alma')">ALMA</button>
+				<button id="atal" class="ui inverted red button formation" onclick="reactualiserBouton('atal')">ATAL</button>
+				<button id="vico" class="ui inverted red button formation" onclick="reactualiserBouton('vico')">VICO</button>
+				<button id="oro" class="ui inverted red button formation" onclick="reactualiserBouton('oro')">ORO</button>
+				<button id="ds" class="ui inverted red button formation" onclick="reactualiserBouton('ds')">DS</button>
+			</div>
+		
+			<div class="sixteen wide column" id="optionPreference">
+		
+				<div class="sixteen wide column">
+					<p style="color:#FCFCFC">Option :</p><br/>
+				</div>
+				<div class="ui stackable equal width grid">
+					<div class="column">
+						<button id="recherche" class="ui inverted green button option" onclick="reactualiserOptions('recherche')">Introduction à la recherche <br/><br/> Communication connaissance de l'entreprise</button>
+					</div>
+					<div class="column">
+						<button id="management" class="ui inverted red button option" onclick="reactualiserOptions('management')">Management à visée innovante et entrepreneuriale</button>
+					</div>
+				</div>
+			</div>
+		
+		
+			<div class="sixteen wide column" id="bouquetPreference">
+				<div class="sixteen wide column">
+					<p style="color:#FCFCFC">Bouquet :</p><br/>
+				</div>
+				<div class="ui stackable equal width grid">
+					<div class="column">
+						<button id="bou3" class="ui inverted green button bouquet" onclick="reactualiserBouquets('bou3')">
+							Bouquet 3 :<br/><br/>
+							Programmation multi-coeurs <br/><br/> Decision Engineering  
 					Programmation multi-coeurs <br/><br/> Decision Engineering  
-				</button>
-		    </div>
-		    <div class="column">
-		    	<button id="bou4" class="ui inverted red button bouquet" onclick="reactualiserBouquets('bou4')">
-					Bouquet 4 : <br/><br/>Systèmes temps réel embarqués <br/><br/> Ingénieurie des réseaux
-				</button>
-		    </div>
-		    <div class="column">
-		    	<button id="bou5" class="ui inverted red button bouquet" onclick="reactualiserBouquets('bou5')">
-					Bouquet 5 : <br/><br/>
-					Probabilistic models <br/><br/> Interaction and applications
-				</button>
-		    </div>
-		</div>
-		</div>
+							Programmation multi-coeurs <br/><br/> Decision Engineering  
+						</button>
+					</div>
+					<div class="column">
+						<button id="bou4" class="ui inverted red button bouquet" onclick="reactualiserBouquets('bou4')">
+							Bouquet 4 : <br/><br/>Systèmes temps réel embarqués <br/><br/> Ingénieurie des réseaux
+						</button>
+					</div>
+					<div class="column">
+						<button id="bou5" class="ui inverted red button bouquet" onclick="reactualiserBouquets('bou5')">
+							Bouquet 5 : <br/><br/>
+							Probabilistic models <br/><br/> Interaction and applications
+						</button>
+					</div>
+				</div>
+			</div>
 		
 		
-		<div class="sixteen wide column" id="texte_info">
-			<p style="color:#FCFCFC">Vous êtes étudiant de ALMA et votre option est Introduction à la recherche / Communication connaissance de l'entreprise.</p>
+			<div class="sixteen wide column" id="texte_info">
+				<p style="color:#FCFCFC">Vous êtes étudiant de ALMA et votre option est Introduction à la recherche / Communication connaissance de l'entreprise.</p>
 	 	   </div>
 	  </div>
 	  <div class="content">
 		    
-	  </div>
-	  <div class="actions">
-	    <div class="ui green ok inverted button" onclick="onValideAction()">
-	      <i class="checkmark icon"></i>
-	      Fermer
-	    </div>
-	  </div>
+		</div>
+		<div class="actions">
+			<div class="ui green ok inverted button" onclick="onValideAction()">
+				<i class="checkmark icon"></i>
+				Apply
+			</div>
+		</div>
 	</div>
 	
 	
 	
-<div class="ui one column stackable center aligned page grid" style="padding:40px;">
+	<div class="ui one column stackable center aligned page grid" style="padding:40px;">
 	
 	
 	
 
-	<div class="column twelve wide">
-		
-		<h1 id="title_master">Master Informatique - Semestre 1</h1>
-		<button class="circular ui icon button" onclick="onParameterAction()">
-		  <i class="icon settings"></i>
-		</button>
-		<button class="circular ui icon button btn-toggle">
-		  <i id="darkIcon" class="moon icon"></i>
-		</button>
-	</div>
-	
-	
-	
-	
-	<div class="ui centered link cards">
-		
-	  <a class="red ui card cours atal alma oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=31733" target="_blank">
-	    <div class="content">
-	      <div class="header">Graphes</div>
-	      <div class="meta">
-	        <span class="category">RUSU-ROBINI Irena</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="orange ui card cours atal alma oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=28212" target="_blank">
-	    <div class="content">
-	      <div class="header">Anglais scientifique</div>
-	      <div class="meta">
-	        <span class="category">LABARBE Laurie</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="yellow ui card cours atal alma oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22217" target="_blank">
-	    <div class="content">
-	      <div class="header">Complexité et algorithmes</div>
-	      <div class="meta">
-	        <span class="category">FERTIN Guillaume</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="olive ui card cours recherche sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=37066" target="_blank">
-	    <div class="content">
-	      <div class="header">Introduction à la recherche</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="green ui card cours atal alma ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22201" target="_blank">
-	    <div class="content">
-	      <div class="header">Web des données, web sémantique</div>
-	      <div class="meta">
-	        <span class="category">MOLLI Hala</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="teal ui card cours atal alma ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22300" target="_blank">
-	    <div class="content">
-	      <div class="header">Web & Cloud & Datastore</div>
-	      <div class="meta">
-	        <span class="category">MOLLI Pascal</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="blue ui card cours atal oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34497" target="_blank">
-	    <div class="content">
-	      <div class="header">Analyse des données</div>
-	      <div class="meta">
-	        <span class="category">BELLANGER-HUSI Lise</span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours recherche sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=41485" target="_blank">
-	    <div class="content">
-	      <div class="header">Communication connaissance de l'entreprise</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours management sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=32235" target="_blank">
-	    <div class="content">
-	      <div class="header">Management à visée innovante et entrepreunariale</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours atal oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34498" target="_blank">
-	    <div class="content">
-	      <div class="header">Langage de programmation de haut-niveau</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours atal oro ds vico sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=31732" target="_blank">
-	    <div class="content">
-	      <div class="header">Graphes II et Réseaux</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours alma sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=38563" target="_blank">
-	    <div class="content">
-	      <div class="header">Preuves et Constructions Formelles</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours alma sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34507" target="_blank">
-	    <div class="content">
-	      <div class="header">Analyse, conception et mise en oeuvre de logiciels</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours alma sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22302" target="_blank">
-	    <div class="content">
-	      <div class="header">Test logiciel</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours alma sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=37063" target="_blank">
-	    <div class="content">
-	      <div class="header">Algorithmes distribués avancés</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22214" target="_blank">
-	    <div class="content">
-	      <div class="header">Optimisation discrète et combinatoire</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22216" target="_blank">
-	    <div class="content">
-	      <div class="header">Métaheuristiques</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-
-	  <a class="violet ui card cours oro" href="https://madoc.univ-nantes.fr/course/view.php?id=50386" target="_blank">
-	    <div class="content">
-	      <div class="header">Optimisation non-linéaire</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <!--
-		  
-		  SEMESTRE 2
-		  
-		  -->
-		  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=28318" target="_blank">
-	    <div class="content">
-	      <div class="header">Machine Learning</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=37067" target="_blank">
-	    <div class="content">
-	      <div class="header">Data Mining</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=11873" target="_blank">
-	    <div class="content">
-	      <div class="header">Compilation</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=35373" target="_blank">
-	    <div class="content">
-	      <div class="header">Ethique et numérique </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=35558" target="_blank">
-	    <div class="content">
-	      <div class="header">Research Project </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro atal alma ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=37064" target="_blank">
-	    <div class="content">
-	      <div class="header">Anglais pour la communication scientifique </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours atal ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=38958" target="_blank">
-	    <div class="content">
-	      <div class="header">Applications industrielles sur les données</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours alma atal ds vico sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22301" target="_blank">
-	    <div class="content">
-	      <div class="header">Bases de données évoluées</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours oro sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=28361" target="_blank">
-	    <div class="content">
-	      <div class="header">Programmation par Contraintes</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <!-- BOUQUET 3 -->
-
-	  <a class="violet ui card cours bou3 sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=28369" target="_blank">
-	    <div class="content">
-	      <div class="header">Decision Engineering</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours bou3 sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=27498" target="_blank">
-	    <div class="content">
-	      <div class="header">Programmation multi-coeurs</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <!-- BOUQUET 4 -->
-
-	  <a class="violet ui card cours bou4 sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22209" target="_blank">
-	    <div class="content">
-	      <div class="header">Ingénierie des réseaux </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours bou4 sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22303" target="_blank">
-	    <div class="content">
-	      <div class="header">Systèmes temps réel embarqués</div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <!-- BOUQUET 5 -->
-
-	  <a class="violet ui card cours bou5 sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=36213" target="_blank">
-	    <div class="content">
-	      <div class="header">Probabilistic models </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  
-	  <a class="violet ui card cours bou5 sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=36165" target="_blank">
-	    <div class="content">
-	      <div class="header">Interaction and applications </div>
-	      <div class="meta">
-	        <span class="category"></span>
-	      </div>
-	      <div class="description">
-	        <p></p>
-	      </div>
-	    </div>
-	  </a>
-	  	  
-	  
-	  
-	  
-	</div>
-	
-
-	<div class="column twelve wide">
-		<h1 id="title_master">Tableau de bord</h1>
-	</div>
-	
-	
-	<div class="ui four column grid">
-	  <div class="column">
-		  <a href="https://webmail-etu.univ-nantes.fr/src/login.php" target="_blank">
-		  <button class="ui facebook button huge" >
-	  		<i class="envelope icon"></i>
-	  		Webmail
+		<div class="column twelve wide">
+			
+			<h1 id="title_master">M2 VICO - Semester 1</h1>
+			<button class="circular ui icon button" onclick="onParameterAction()">
+				<i class="icon settings"></i>
 			</button>
-		</a>
+			<button class="circular ui icon button btn-toggle">
+				<i id="darkIcon" class="moon icon"></i>
+			</button>
 		</div>
-  	  <div class="column" id="edt_button">
-  		    <button class="ui button linkedin huge" onclick="redirecEDTV1()"><i class="calendar icon"></i>EDT V1</button>		
-  	  </div>
-	  <div class="column">
-		  <a href="https://unsport.univ-nantes.fr/" target="_blank">
-		<button class="ui google plus button huge">
-		  <i class="basketball ball icon"></i>
-		  SUAPS
-		</button>
-		</a>
-	  </div>
-	  <div class="column">
-		  <a href="https://discord.gg/AX2An8c" target="_blank">
-		<button class="ui discord button huge">
-		  <i class="discord icon"></i>
-		  Discord
-		</button>
-		</a>
-	  </div>
+	
+		<div class="ui centered link cards">
+
+			<!-- M1 Semester 1 -->
+			<a class="red ui card cours atal alma oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=31733" target="_blank">
+				<div class="content">
+					<div class="header">Graphes</div>
+					<div class="meta">
+						<span class="category">RUSU-ROBINI Irena</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="orange ui card cours atal alma oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=28212" target="_blank">
+				<div class="content">
+					<div class="header">Anglais scientifique</div>
+					<div class="meta">
+						<span class="category">LABARBE Laurie</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="yellow ui card cours atal alma oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22217" target="_blank">
+				<div class="content">
+					<div class="header">Complexité et algorithmes</div>
+					<div class="meta">
+						<span class="category">FERTIN Guillaume</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="olive ui card cours recherche m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=37066" target="_blank">
+				<div class="content">
+					<div class="header">Introduction à la recherche</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="green ui card cours atal alma ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22201" target="_blank">
+				<div class="content">
+					<div class="header">Web des données, web sémantique</div>
+					<div class="meta">
+						<span class="category">MOLLI Hala</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="teal ui card cours atal alma ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22300" target="_blank">
+				<div class="content">
+					<div class="header">Web & Cloud & Datastore</div>
+					<div class="meta">
+						<span class="category">MOLLI Pascal</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="blue ui card cours atal oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34497" target="_blank">
+				<div class="content">
+					<div class="header">Analyse des données</div>
+					<div class="meta">
+						<span class="category">BELLANGER-HUSI Lise</span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours recherche m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=41485" target="_blank">
+				<div class="content">
+					<div class="header">Communication connaissance de l'entreprise</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours management m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=32235" target="_blank">
+				<div class="content">
+					<div class="header">Management à visée innovante et entrepreunariale</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours atal oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34498" target="_blank">
+				<div class="content">
+					<div class="header">Langage de programmation de haut-niveau</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours atal oro ds vico m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=31732" target="_blank">
+				<div class="content">
+					<div class="header">Graphes II et Réseaux</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours alma m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=38563" target="_blank">
+				<div class="content">
+					<div class="header">Preuves et Constructions Formelles</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours alma m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=34507" target="_blank">
+				<div class="content">
+					<div class="header">Analyse, conception et mise en oeuvre de logiciels</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours alma m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22302" target="_blank">
+				<div class="content">
+					<div class="header">Test logiciel</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours alma m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=37063" target="_blank">
+				<div class="content">
+					<div class="header">Algorithmes distribués avancés</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22214" target="_blank">
+				<div class="content">
+					<div class="header">Optimisation discrète et combinatoire</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=22216" target="_blank">
+				<div class="content">
+					<div class="header">Métaheuristiques</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+
+			<a class="violet ui card cours oro m1sem1" href="https://madoc.univ-nantes.fr/course/view.php?id=50386" target="_blank">
+				<div class="content">
+					<div class="header">Optimisation non-linéaire</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<!-- M1 SEMESTRE 2 -->
+		  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=28318" target="_blank">
+				<div class="content">
+					<div class="header">Machine Learning</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=37067" target="_blank">
+				<div class="content">
+					<div class="header">Data Mining</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=11873" target="_blank">
+				<div class="content">
+					<div class="header">Compilation</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=35373" target="_blank">
+				<div class="content">
+					<div class="header">Ethique et numérique </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=35558" target="_blank">
+				<div class="content">
+					<div class="header">Research Project </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro atal alma ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=37064" target="_blank">
+				<div class="content">
+					<div class="header">Anglais pour la communication scientifique </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours atal ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=38958" target="_blank">
+				<div class="content">
+					<div class="header">Applications industrielles sur les données</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours alma atal ds vico m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22301" target="_blank">
+				<div class="content">
+					<div class="header">Bases de données évoluées</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours oro m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=28361" target="_blank">
+				<div class="content">
+					<div class="header">Programmation par Contraintes</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<!-- M1 Semester 2 BOUQUET 3 -->
+
+			<a class="violet ui card cours bou3 m1sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=28369" target="_blank">
+				<div class="content">
+					<div class="header">Decision Engineering</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours bou3 m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=27498" target="_blank">
+				<div class="content">
+					<div class="header">Programmation multi-coeurs</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<!-- M1 Semester 2 BOUQUET 4 -->
+
+			<a class="violet ui card cours bou4 m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22209" target="_blank">
+				<div class="content">
+					<div class="header">Ingénierie des réseaux </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours bou4 m1sem2" href="https://madoc.univ-nantes.fr/course/view.php?id=22303" target="_blank">
+				<div class="content">
+					<div class="header">Systèmes temps réel embarqués</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<!-- M1 Semester 2 BOUQUET 5 -->
+
+			<a class="violet ui card cours bou5 m1sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=36213" target="_blank">
+				<div class="content">
+					<div class="header">Probabilistic models </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+			<a class="violet ui card cours bou5 m1sem2" href="https://madoc.univ-nantes.fr/enrol/index.php?id=36165" target="_blank">
+				<div class="content">
+					<div class="header">Interaction and applications </div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+
+			<!-- M2 Semester 1 -->
+
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1038" target="_blank">
+				<div class="content">
+					<div class="header">Advanced Image and Video Processing</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1042" target="_blank">
+				<div class="content">
+					<div class="header">Multimedia Communication</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1040" target="_blank">
+				<div class="content">
+					<div class="header">Machine Learning for Computer Vision</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1039" target="_blank">
+				<div class="content">
+					<div class="header">Perceptual Computing</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1041" target="_blank">
+				<div class="content">
+					<div class="header">3D Computer Graphics</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1043" target="_blank">
+				<div class="content">
+					<div class="header">Human Computer Interaction</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1044" target="_blank">
+				<div class="content">
+					<div class="header">French Language and Europpean Culture</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+			<a class="violet ui card cours vico m2sem1" href="https://extradoc.univ-nantes.fr/course/view.php?id=1045" target="_blank">
+				<div class="content">
+					<div class="header">Internship</div>
+					<div class="meta">
+						<span class="category"></span>
+					</div>
+					<div class="description">
+						<p></p>
+					</div>
+				</div>
+			</a>
+	  
+		</div>
+	
+		<div class="column twelve wide">
+			<h1 id="title_master">Dashboard</h1>
+		</div>
+	
+	
+		<div class="ui four column grid">
+			<div class="column">
+				<a href="https://webmail-etu.univ-nantes.fr/src/login.php" target="_blank">
+					<button class="ui facebook button huge" >
+						<i class="envelope icon"></i>
+						Webmail
+					</button>
+				</a>
+			</div>
+			<div class="column" id="edt_button">
+				<button class="ui button linkedin huge" onclick="redirecEDTV1()"><i class="calendar icon"></i>Timetable</button>		
+			</div>
+			<div class="column">
+				<a href="https://unsport.univ-nantes.fr/" target="_blank">
+					<button class="ui google plus button huge">
+						<i class="basketball ball icon"></i>
+						Sports
+					</button>
+				</a>
+			</div>
+			<div class="column">
+				<a href="https://uncloud.univ-nantes.fr">
+					<button class="ui button twitter huge">
+						<i class="cloud icon"></i>
+						UNcloud
+					</button>
+				</a>
+			</div>
+			<div class="column">
+				<a href="https://discord.gg/AX2An8c" target="_blank" id="a_social">
+					<button class="ui discord button huge">
+						<i class="discord icon" id="i_social"></i>
+						<img class="icon" src="images/mattermost.png" alt="mattermost logo" id="logo_mattermost">
+						<span id="span_social">Discord</span>
+					</button>
+				</a>
+			</div>
+			
+		</div>
+	
+		<div id="cookie" class="ui basic modal">
+			<div class="ui icon header">
+				<i class="archive icon"></i>
+				Cookies
+			</div>
+			<div class="content">
+				<p style="color:#FCFCFC">By using this website you accept that the following information will be remembered : </p>
+				<p style="color:#FCFCFC">- Light/dark mode preference</p>
+				<p style="color:#FCFCFC">- Semester selection</p>
+			</div>
+			<div class="actions">
+				<div class="ui green ok inverted button" onclick="accepteCookie()">
+				<i class="checkmark icon"></i>
+				Agree
+				</div>
+			</div>
+		</div>
+	
+	
+
 	</div>
-	
-	<div id="cookie" class="ui basic modal">
-	  <div class="ui icon header">
-	    <i class="archive icon"></i>
-	    Cookies
-	  </div>
-	  <div class="content">
-	    <p style="color:#FCFCFC">En poursuivant sur le site vous acceptez les cookies suivants : </p>
-		<p style="color:#FCFCFC">- Stockage de la préférence mode jour/sombre</p>
-		<p style="color:#FCFCFC">- Stockage du parcours choisi</p>
-	  </div>
-	  <div class="actions">
-	    <div class="ui green ok inverted button" onclick="accepteCookie()">
-	      <i class="checkmark icon"></i>
-	      J'accepte
-	    </div>
-	  </div>
-	</div>
-	
-	
 
-</div>
-
-<div class="footer">
-
-    <div class="footer_contents">
-    	
+	<div class="footer">
+		<div class="footer_contents">
 			<div class="ui inverted vertical footer segment form-page">
-		  <div class="ui container" style="text-align: center">
-			  <p style="text-align: center; color:#FCFCFC"> Copyright &copy; <script>document.write(new Date().getFullYear())</script> Thomas Lapierre | Tous droits réservés</p>
-				<button class="ui github button " onclick="redirectGithubLink()"><i class="github icon"></i>Soutiens mon projet ⭐</button>
-		  </div>
+				<div class="ui container" style="text-align: center">
+					<p style="text-align: center; color:#FCFCFC"> Copyright &copy; <script>document.write(new Date().getFullYear())</script> Thomas Lapierre | All rights reserved | <a href="https://github.com/LucasLelievre/MasterInfoDashboard">Forked by Lucas Lelièvre</a></p>
+					<button class="ui github button " onclick="redirectGithubLink()"><i class="github icon"></i>Original Project</button>
+				</div>
+			</div>
 		</div>
-    </div>
 
-</div>
-<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
 </body>
 <footer id="footer">
-	
 	<script type="text/javascript" src="js/script.js"></script>
 </footer>
 </html>
